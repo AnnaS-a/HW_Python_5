@@ -12,7 +12,7 @@
 # Пример :  2021 % ( 28 + 1 ) = 20 , первый игрок первым ходом должен взять 20 конфет.
 # если вторым ходом второй игрок взял 10 конфет, то первый должен взять 28 + 1 - 10 = 19 и так далее..
 import random    
-   
+import sys  
 user_number = None    
 user_count = int(1)   
 users = []    
@@ -25,7 +25,7 @@ print(users)
 
 is_winner = False   
 winner_name = None  
-k = 61 
+k = 2021 
 step_max = 28
 step_1 = [k / step_max + 1]
 count = 1
@@ -39,20 +39,20 @@ while not is_winner:  #  пока у нас нет победителя крут
                     user_number = k % (step_max + 1)
                     print(f'бот забирает конфет: {user_number}')
                     candies = candies - user_number
-                    print(candies)
+                    # print(candies)
                 else: 
                     user_number = step_max + 1 - user_number 
                     print(f'бот забирает конфет: {user_number}') 
                     candies = candies - user_number 
-                    print(candies)  
+                    # print(candies)  
             else:    
                 user_number = int(input('Введите количество конфет (не более 28): ')) 
                 if user_number > step_max:
                     print('Ввели число больше 28.')
-                    break 
+                    sys.exit()
                 else:
                     candies = candies - user_number   
-                    print(candies)              
+                    # print(candies)              
             count += 1    
             if candies <= 0:      
                 is_winner = True      
